@@ -1,5 +1,5 @@
 /* eslint-disable prefer-const */
-import { log, BigInt, BigDecimal, Address, EthereumEvent } from '@graphprotocol/graph-ts'
+import { log, BigInt, BigDecimal, Address, EthereumEvent, CallResult } from '@graphprotocol/graph-ts'
 import { ERC20 } from '../types/Factory/ERC20'
 import { ERC20SymbolBytes } from '../types/Factory/ERC20SymbolBytes'
 import { ERC20NameBytes } from '../types/Factory/ERC20NameBytes'
@@ -7,7 +7,7 @@ import { User, Bundle, Token, LiquidityPosition, LiquidityPositionSnapshot, Pair
 import { Factory as FactoryContract } from '../types/templates/Pair/Factory'
 
 export const ADDRESS_ZERO = '0x0000000000000000000000000000000000000000'
-export const FACTORY_ADDRESS = '0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f'
+export const FACTORY_ADDRESS = '0x17854c8d5a41d5A89B275386E24B2F38FD0AfbDd'
 
 export let ZERO_BI = BigInt.fromI32(0)
 export let ONE_BI = BigInt.fromI32(1)
@@ -55,11 +55,30 @@ export function isNullEthValue(value: string): boolean {
 
 export function fetchTokenSymbol(tokenAddress: Address): string {
   // hard coded overrides
-  if (tokenAddress.toHexString() == '0xe0b7927c4af23765cb51314a0e0521a9645f0e2a') {
-    return 'DGD'
+
+  // if (tokenAddress.toHexString() == '0xe0b7927c4af23765cb51314a0e0521a9645f0e2a') {
+  //   return 'DGD'
+  // }
+  // if (tokenAddress.toHexString() == '0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9') {
+  //   return 'AAVE'
+  // }
+
+  if (
+    tokenAddress.toHexString() == '0x3a9c927dd096070cff9e6b554e313cc047ea23f5'
+  ) {
+    return 'EDAI'  
   }
-  if (tokenAddress.toHexString() == '0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9') {
-    return 'AAVE'
+
+  if (
+    tokenAddress.toHexString() == '0x593122aae80a6fc3183b2ac0c4ab3336debee528'
+  ) {
+    return 'OCEAN'
+  }
+
+  if (
+    tokenAddress.toHexString() == '0x26e4991a72728b1a9b1044345e5bf9293e0a1434'
+  ) {
+    return 'SLR'
   }
 
   let contract = ERC20.bind(tokenAddress)
@@ -85,11 +104,30 @@ export function fetchTokenSymbol(tokenAddress: Address): string {
 
 export function fetchTokenName(tokenAddress: Address): string {
   // hard coded overrides
-  if (tokenAddress.toHexString() == '0xe0b7927c4af23765cb51314a0e0521a9645f0e2a') {
-    return 'DGD'
+
+  // if (tokenAddress.toHexString() == '0xe0b7927c4af23765cb51314a0e0521a9645f0e2a') {
+  //   return 'DGD'
+  // }
+  // if (tokenAddress.toHexString() == '0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9') {
+  //   return 'Aave Token'
+  // }
+
+  if (
+    tokenAddress.toHexString() == '0x3a9c927dd096070cff9e6b554e313cc047ea23f5'
+  ) {
+    return 'EDAI'  
   }
-  if (tokenAddress.toHexString() == '0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9') {
-    return 'Aave Token'
+
+  if (
+    tokenAddress.toHexString() == '0x593122aae80a6fc3183b2ac0c4ab3336debee528'
+  ) {
+    return 'OCEAN'
+  }
+
+  if (
+    tokenAddress.toHexString() == '0x26e4991a72728b1a9b1044345e5bf9293e0a1434'
+  ) {
+    return 'SLR'
   }
 
   let contract = ERC20.bind(tokenAddress)
@@ -114,6 +152,25 @@ export function fetchTokenName(tokenAddress: Address): string {
 }
 
 export function fetchTokenTotalSupply(tokenAddress: Address): BigInt {
+  // hardcoded overrrides
+  if (
+    tokenAddress.toHexString() == '0x3a9c927dd096070cff9e6b554e313cc047ea23f5'
+  ) {
+    return BigInt.fromI32(1502) 
+  }
+
+  if (
+    tokenAddress.toHexString() == '0x593122aae80a6fc3183b2ac0c4ab3336debee528'
+  ) {
+    return BigInt.fromI32(2001) 
+  }
+
+  if (
+    tokenAddress.toHexString() == '0x26e4991a72728b1a9b1044345e5bf9293e0a1434'
+  ) {
+    return BigInt.fromI32(38654130)
+  }
+
   let contract = ERC20.bind(tokenAddress)
   let totalSupplyValue = null
   let totalSupplyResult = contract.try_totalSupply()
@@ -125,9 +182,29 @@ export function fetchTokenTotalSupply(tokenAddress: Address): BigInt {
 
 export function fetchTokenDecimals(tokenAddress: Address): BigInt {
   // hardcode overrides
-  if (tokenAddress.toHexString() == '0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9') {
-    return BigInt.fromI32(18)
+
+  // if (tokenAddress.toHexString() == '0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9') {
+  //   return BigInt.fromI32(18)
+  // }
+
+  if (
+    tokenAddress.toHexString() == '0x3a9c927dd096070cff9e6b554e313cc047ea23f5'
+  ) {
+    return BigInt.fromI32(18) 
   }
+
+  if (
+    tokenAddress.toHexString() == '0x593122aae80a6fc3183b2ac0c4ab3336debee528'
+  ) {
+    return BigInt.fromI32(18) 
+  }
+  
+  if (
+    tokenAddress.toHexString() == '0x26e4991a72728b1a9b1044345e5bf9293e0a1434'
+  ) {
+    return BigInt.fromI32(38654130)
+  }
+  
 
   let contract = ERC20.bind(tokenAddress)
   // try types uint8 for decimals
