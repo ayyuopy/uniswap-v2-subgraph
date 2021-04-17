@@ -63,23 +63,23 @@ export function fetchTokenSymbol(tokenAddress: Address): string {
   //   return 'AAVE'
   // }
 
-  if (
-    tokenAddress.toHexString() == '0x3a9c927dd096070cff9e6b554e313cc047ea23f5'
-  ) {
-    return 'EDAI'  
-  }
+  // if (
+  //   tokenAddress.toHexString() == '0x3a9c927dd096070cff9e6b554e313cc047ea23f5'
+  // ) {
+  //   return 'EDAI'  
+  // }
 
-  if (
-    tokenAddress.toHexString() == '0x593122aae80a6fc3183b2ac0c4ab3336debee528'
-  ) {
-    return 'OCEAN'
-  }
+  // if (
+  //   tokenAddress.toHexString() == '0x593122aae80a6fc3183b2ac0c4ab3336debee528'
+  // ) {
+  //   return 'OCEAN'
+  // }
 
-  if (
-    tokenAddress.toHexString() == '0x26e4991a72728b1a9b1044345e5bf9293e0a1434'
-  ) {
-    return 'SLR'
-  }
+  // if (
+  //   tokenAddress.toHexString() == '0x26e4991a72728b1a9b1044345e5bf9293e0a1434'
+  // ) {
+  //   return 'SLR'
+  // }
 
   let contract = ERC20.bind(tokenAddress)
   let contractSymbolBytes = ERC20SymbolBytes.bind(tokenAddress)
@@ -112,23 +112,23 @@ export function fetchTokenName(tokenAddress: Address): string {
   //   return 'Aave Token'
   // }
 
-  if (
-    tokenAddress.toHexString() == '0x3a9c927dd096070cff9e6b554e313cc047ea23f5'
-  ) {
-    return 'EDAI'  
-  }
+  // if (
+  //   tokenAddress.toHexString() == '0x3a9c927dd096070cff9e6b554e313cc047ea23f5'
+  // ) {
+  //   return 'EDAI'  
+  // }
 
-  if (
-    tokenAddress.toHexString() == '0x593122aae80a6fc3183b2ac0c4ab3336debee528'
-  ) {
-    return 'OCEAN'
-  }
+  // if (
+  //   tokenAddress.toHexString() == '0x593122aae80a6fc3183b2ac0c4ab3336debee528'
+  // ) {
+  //   return 'OCEAN'
+  // }
 
-  if (
-    tokenAddress.toHexString() == '0x26e4991a72728b1a9b1044345e5bf9293e0a1434'
-  ) {
-    return 'SLR'
-  }
+  // if (
+  //   tokenAddress.toHexString() == '0x26e4991a72728b1a9b1044345e5bf9293e0a1434'
+  // ) {
+  //   return 'SLR'
+  // }
 
   let contract = ERC20.bind(tokenAddress)
   let contractNameBytes = ERC20NameBytes.bind(tokenAddress)
@@ -153,23 +153,23 @@ export function fetchTokenName(tokenAddress: Address): string {
 
 export function fetchTokenTotalSupply(tokenAddress: Address): BigInt {
   // hardcoded overrrides
-  if (
-    tokenAddress.toHexString() == '0x3a9c927dd096070cff9e6b554e313cc047ea23f5'
-  ) {
-    return BigInt.fromI32(1502) 
-  }
+  // if (
+  //   tokenAddress.toHexString() == '0x3a9c927dd096070cff9e6b554e313cc047ea23f5'
+  // ) {
+  //   return BigInt.fromI32(1502) 
+  // }
 
-  if (
-    tokenAddress.toHexString() == '0x593122aae80a6fc3183b2ac0c4ab3336debee528'
-  ) {
-    return BigInt.fromI32(2001) 
-  }
+  // if (
+  //   tokenAddress.toHexString() == '0x593122aae80a6fc3183b2ac0c4ab3336debee528'
+  // ) {
+  //   return BigInt.fromI32(2001) 
+  // }
 
-  if (
-    tokenAddress.toHexString() == '0x26e4991a72728b1a9b1044345e5bf9293e0a1434'
-  ) {
-    return BigInt.fromI32(38654130)
-  }
+  // if (
+  //   tokenAddress.toHexString() == '0x26e4991a72728b1a9b1044345e5bf9293e0a1434'
+  // ) {
+  //   return BigInt.fromI32(38654130)
+  // }
 
   let contract = ERC20.bind(tokenAddress)
   let totalSupplyValue = null
@@ -187,23 +187,23 @@ export function fetchTokenDecimals(tokenAddress: Address): BigInt {
   //   return BigInt.fromI32(18)
   // }
 
-  if (
-    tokenAddress.toHexString() == '0x3a9c927dd096070cff9e6b554e313cc047ea23f5'
-  ) {
-    return BigInt.fromI32(18) 
-  }
+  // if (
+  //   tokenAddress.toHexString() == '0x3a9c927dd096070cff9e6b554e313cc047ea23f5'
+  // ) {
+  //   return BigInt.fromI32(18) 
+  // }
 
-  if (
-    tokenAddress.toHexString() == '0x593122aae80a6fc3183b2ac0c4ab3336debee528'
-  ) {
-    return BigInt.fromI32(18) 
-  }
-  
-  if (
-    tokenAddress.toHexString() == '0x26e4991a72728b1a9b1044345e5bf9293e0a1434'
-  ) {
-    return BigInt.fromI32(38654130)
-  }
+  // if (
+  //   tokenAddress.toHexString() == '0x593122aae80a6fc3183b2ac0c4ab3336debee528'
+  // ) {
+  //   return BigInt.fromI32(18) 
+  // }
+
+  // if (
+  //   tokenAddress.toHexString() == '0x26e4991a72728b1a9b1044345e5bf9293e0a1434'
+  // ) {
+  //   return BigInt.fromI32(38654130)
+  // }
   
 
   let contract = ERC20.bind(tokenAddress)
